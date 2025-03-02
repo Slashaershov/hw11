@@ -1,10 +1,13 @@
+import java.time.LocalDate;
+
 public class Main
 {
     public static void main(String[] args)
     {
-        Ex1(2035);
-        Ex2(1, 2016);
-        Ex3(210);
+        DoExercise1(2035);
+        DoExercise2(1, 2016);
+        int currentYear = LocalDate.now().getYear();
+        DoExercise3(currentYear);
     }
 
     private static void Print(String msg)
@@ -17,9 +20,9 @@ public class Main
         Print("");
     }
 
-    private static void Ex1(int year)
+    private static void DoExercise1(int year)
     {
-        if (IsLeapYear(year))
+        if (CheckLeapYear(year))
         {
             Print(year + "  год — високосный год");
         }
@@ -30,12 +33,18 @@ public class Main
         PrintLine();
     }
 
-    private static boolean IsLeapYear(int year)
+    private static boolean CheckLeapYear(int year)
     {
-        return year % 4 == 0 && (year % 100 != 0 || year % 100 == 0);
+        return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
     }
 
-    private static void Ex2(int typeOS, int clientDeviceYear)
+    private static void DoExercise2(int typeOS, int clientDeviceYear)
+    {
+        PrintMsgAboutVersion(typeOS, clientDeviceYear);
+        PrintLine();
+    }
+
+    private static void PrintMsgAboutVersion(int typeOS, int clientDeviceYear)
     {
         String versionTypeStr = clientDeviceYear < 2015 ? "облегченную" : "обычную";
         String osTypeStr = switch (typeOS)
@@ -45,10 +54,9 @@ public class Main
             default -> throw new RuntimeException("Не зарегистрированная ОС");
         };
         Print("Установите " + versionTypeStr + " версию приложения для " + osTypeStr + " по ссылке");
-        PrintLine();
     }
 
-    private static void Ex3(int deliveryDistance)
+    private static void DoExercise3(int deliveryDistance)
     {
         int delivaryDuration = CalcDelivaryDuration(deliveryDistance);
         if (delivaryDuration == -1)
