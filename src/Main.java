@@ -4,47 +4,47 @@ public class Main
 {
     public static void main(String[] args)
     {
-        DoExercise1(2035);
-        DoExercise2(1, 2016);
+        doExercise1(2035);
+        doExercise2(1, 2016);
         int currentYear = LocalDate.now().getYear();
-        DoExercise3(currentYear);
+        doExercise3(currentYear);
     }
 
-    private static void Print(String msg)
+    private static void print(String msg)
     {
         System.out.println(msg);
     }
 
-    private static void PrintLine()
+    private static void printLine()
     {
-        Print("");
+        print("");
     }
 
-    private static void DoExercise1(int year)
+    private static void doExercise1(int year)
     {
-        if (CheckLeapYear(year))
+        if (checkLeapYear(year))
         {
-            Print(year + "  год — високосный год");
+            print(year + "  год — високосный год");
         }
         else
         {
-            Print(year + "  год — не високосный год");
+            print(year + "  год — не високосный год");
         }
-        PrintLine();
+        printLine();
     }
 
-    private static boolean CheckLeapYear(int year)
+    private static boolean checkLeapYear(int year)
     {
         return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
     }
 
-    private static void DoExercise2(int typeOS, int clientDeviceYear)
+    private static void doExercise2(int typeOS, int clientDeviceYear)
     {
-        PrintMsgAboutVersion(typeOS, clientDeviceYear);
-        PrintLine();
+        printMsgAboutVersion(typeOS, clientDeviceYear);
+        printLine();
     }
 
-    private static void PrintMsgAboutVersion(int typeOS, int clientDeviceYear)
+    private static void printMsgAboutVersion(int typeOS, int clientDeviceYear)
     {
         String versionTypeStr = clientDeviceYear < 2015 ? "облегченную" : "обычную";
         String osTypeStr = switch (typeOS)
@@ -53,12 +53,12 @@ public class Main
             case 1 -> "Android";
             default -> throw new RuntimeException("Не зарегистрированная ОС");
         };
-        Print("Установите " + versionTypeStr + " версию приложения для " + osTypeStr + " по ссылке");
+        print("Установите " + versionTypeStr + " версию приложения для " + osTypeStr + " по ссылке");
     }
 
-    private static void DoExercise3(int deliveryDistance)
+    private static void doExercise3(int deliveryDistance)
     {
-        int delivaryDuration = CalcDelivaryDuration(deliveryDistance);
+        int delivaryDuration = calcDelivaryDuration(deliveryDistance);
         if (delivaryDuration == -1)
         {
             System.out.println("Доставка так далеко не производится");
@@ -67,7 +67,7 @@ public class Main
         System.out.println("Потребуется дней: " + delivaryDuration);
     }
 
-    private static int CalcDelivaryDuration(int deliveryDistance)
+    private static int calcDelivaryDuration(int deliveryDistance)
     {
         if (deliveryDistance < 20)
         {
